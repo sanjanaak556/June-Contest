@@ -41,14 +41,22 @@
 		}
 
 		function orderPrep() {
-			return new Promise(resolve => {
-				setTimeout(() => {
-					const orderStatus = { order_status: true, paid: false };
-					resolve(orderStatus);
-				}, 1500);
-			});
-		}
+  			return new Promise((resolve, reject) => {
+   			 setTimeout(() => {
+    			  const orderStatus = { order_status: true, paid: false };
+      
+      				const error = false;
 
+      				if (!error) {
+       				 resolve(orderStatus); // Resolve the promise with the order status
+      				} else {
+      				  reject(new Error('Error occurred during order preparation.')); // Reject the promise with an error
+      			}
+    			}, 1500);
+ 			 });
+			}
+
+		
 		function payOrder() {
 			return new Promise(resolve => {
 				setTimeout(() => {
